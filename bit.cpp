@@ -31,6 +31,8 @@ int reverseInPosition(int value, int position)
 
 int isPowerOfTwo(int value)
 {
+    // the binary differences between every power of two with the value less than one is equal to 0
+    // thats why we check the value of given number with one less of its using and operation
     return (value && !(value & value - 1));
 };
 
