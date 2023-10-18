@@ -21,18 +21,21 @@ int clearBit(int value, int position)
 {
     return (value & (~(1 << position)));
 };
-//we can also clear a bit by using reverseInPosition function.but the limitation is
-// if in given position is there a 0 bit. then it will be transform into 1 because of xor operation
-//thats why for clearing bit in a given position its always safe to use clearBit function
+// we can also clear a bit by using reverseInPosition function.but the limitation is
+//  if in given position is there a 0 bit. then it will be transform into 1 because of xor operation
+// thats why for clearing bit in a given position its always safe to use clearBit function
 int reverseInPosition(int value, int position)
 {
     return (value ^ (1 << position));
 };
 
-
+int isPowerOfTwo(int value)
+{
+    return (value && !(value & value - 1));
+};
 
 int main()
 {
-    cout << reverseInPosition(12, 2);
+    cout << isPowerOfTwo(32);
     return 0;
 };
