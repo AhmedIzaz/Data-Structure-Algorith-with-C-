@@ -36,8 +36,21 @@ bool isPowerOfTwo(int value)
     return (value && !(value & value - 1));
 };
 
+// suppose value is 18 = 10010
+// value - 1 = 17      = 10001
+//   &                 = 10000
+// if new value > 0 then value = (value & (value-1)) and count++
+// if value = 0 then the count is the counted number of 1 in the binary value of given value
+// we can solve this in both recursive function or loop
+int countOneInBinaryValue(int value, int count = 0)
+{
+    if (value <= 0)
+        return count;
+    return countOneInBinaryValue((value & value - 1), ++count);
+};
+
 int main()
 {
-    cout << isPowerOfTwo(32);
+    cout << countOneInBinaryValue(15);
     return 0;
 };
