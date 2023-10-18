@@ -17,10 +17,19 @@ int setBit(int value, int position)
     return (value | (1 << position));
 };
 
+int clearBit(int value, int position)
+{
+    return (value & (~(1 << position)));
+};
+//we can also clear a bit by using reverseInPosition function.but the limitation is
+// if in given position is there a 0 bit. then it will be transform into 1 because of xor operation
+//thats why for clearing bit in a given position its always safe to use clearBit function
 int reverseInPosition(int value, int position)
 {
     return (value ^ (1 << position));
 };
+
+
 
 int main()
 {
