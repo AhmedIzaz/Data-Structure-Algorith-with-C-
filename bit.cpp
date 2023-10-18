@@ -49,8 +49,24 @@ int countOneInBinaryValue(int value, int count = 0)
     return countOneInBinaryValue((value & value - 1), ++count);
 };
 
+void subsets(int array[], int length)
+{
+    for (int i = 0; i < (1 << length); i++)
+    {
+        for (int j = 0; j < length; j++)
+        {
+            if ((i & (1 << j)) != 0)
+            {
+                cout << array[j] << " ";
+            };
+        };
+        cout << endl;
+    };
+};
+
 int main()
 {
-    cout << countOneInBinaryValue(15);
+    int array[] = {1, 2, 3};
+    subsets(array, 3);
     return 0;
 };
