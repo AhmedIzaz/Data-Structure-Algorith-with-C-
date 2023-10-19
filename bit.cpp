@@ -64,9 +64,20 @@ void subsets(int array[], int length)
     };
 };
 
+
+// remember it will work only on the condition where only one unique number
+// other number must have to be repeated twice, not more
+int findUnique(int array[], int size)
+{
+    int xorsum = 0;
+    for (int i = 0; i < size; i++)
+        xorsum = xorsum ^ array[i];
+    return xorsum;
+};
+
 int main()
 {
-    int array[] = {1, 2, 3};
-    subsets(array, 3);
+    int array[] = {3, 3, 8, 13, 15, 8, 13};
+    cout << findUnique(array, 7) << endl;
     return 0;
 };
