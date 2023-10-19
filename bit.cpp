@@ -76,7 +76,7 @@ int findUnique(int array[], int size)
 
 // first find the xor of every item [line number 81-83].
 // find the right most digit(1) position from that xor result [line 88-93].
-// on that position which item of array has also a digit, 
+// on that position which item of array has also a digit,
 // find and make xor of them, thuse it will give the one unique [line 96-103].
 // now make xor with all elements xor result with right most digits matching values
 // xor, thus it will give another unique from array [line 108]
@@ -87,25 +87,21 @@ void findTwoUnique(int array[], int length)
     for (int i = 0; i < length; i++)
         xorsum = xorsum ^ array[i];
     int tempXorsum = xorsum;
-    int most_right_bit_position = 0;
-    int setbit = 0;
-    while (setbit != 1)
+    int get_bit = 0, right_most_digit_position = 0;
+    while (get_bit != 1)
     {
-        setbit = xorsum & 1;
-        ++most_right_bit_position;
+        get_bit = xorsum & 1;
+        right_most_digit_position++;
         xorsum = xorsum >> 1;
     };
-    int newXor = 0;
+    int newXorsum = 0;
     for (int i = 0; i < length; i++)
     {
-        if (getBit(array[i], most_right_bit_position - 1))
-        {
-            newXor = newXor ^ array[i];
-        };
-    };
-
-    cout << newXor << endl;
-    cout << (tempXorsum ^ newXor) << endl;
+        if (getBit(array[i], right_most_digit_position - 1))
+            newXorsum = newXorsum ^ array[i];
+    }
+    cout << newXorsum << endl;
+    cout << (tempXorsum ^ newXorsum) << endl;
 };
 
 int main()
