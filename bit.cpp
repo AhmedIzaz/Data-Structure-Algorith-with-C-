@@ -64,7 +64,6 @@ void subsets(int array[], int length)
     };
 };
 
-
 // remember it will work only on the condition where only one unique number
 // other number must have to be repeated twice, not more
 int findUnique(int array[], int size)
@@ -75,9 +74,43 @@ int findUnique(int array[], int size)
     return xorsum;
 };
 
+// first find the xor of every item [line number 81-83].
+// find the right most digit(1) position from that xor result [line 88-93].
+// on that position which item of array has also a digit, 
+// find and make xor of them, thuse it will give the one unique [line 96-103].
+// now make xor with all elements xor result with right most digits matching values
+// xor, thus it will give another unique from array [line 108]
+
+void findTwoUnique(int array[], int length)
+{
+    int xorsum = 0;
+    for (int i = 0; i < length; i++)
+        xorsum = xorsum ^ array[i];
+    int tempXorsum = xorsum;
+    int most_right_bit_position = 0;
+    int setbit = 0;
+    while (setbit != 1)
+    {
+        setbit = xorsum & 1;
+        ++most_right_bit_position;
+        xorsum = xorsum >> 1;
+    };
+    int newXor = 0;
+    for (int i = 0; i < length; i++)
+    {
+        if (getBit(array[i], most_right_bit_position - 1))
+        {
+            newXor = newXor ^ array[i];
+        };
+    };
+
+    cout << newXor << endl;
+    cout << (tempXorsum ^ newXor) << endl;
+};
+
 int main()
 {
-    int array[] = {3, 3, 8, 13, 15, 8, 13};
-    cout << findUnique(array, 7) << endl;
+    int array[] = {3, 3, 8, 13, 15, 8, 13, 9};
+    findTwoUnique(array, 8);
     return 0;
 };
