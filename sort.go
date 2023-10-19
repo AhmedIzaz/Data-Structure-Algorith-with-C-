@@ -34,8 +34,20 @@ func selection_sort(array []int, length int) {
 	}
 }
 
+func insertion_sort(array []int, length int) {
+	for i := 1; i < length; i++ {
+		key := array[i]
+		j := i - 1
+		for j >= 0 && array[j] > key {
+			array[j+1] = array[j]
+			j--
+		}
+		array[j+1] = key
+	}
+}
+
 func main() {
 	array := []int{21, 341, 2, 23, 11, 11, 1, 3345}
-	selection_sort(array, len(array))
+	insertion_sort(array, len(array))
 	fmt.Println(array)
 }
