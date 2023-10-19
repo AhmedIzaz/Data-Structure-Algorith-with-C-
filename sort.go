@@ -20,8 +20,22 @@ func bubble_sort(array []int, length int) {
 	}
 }
 
+func selection_sort(array []int, length int) {
+	for i := 0; i < length-1; i++ {
+		min := i
+		for j := i + 1; j < length; j++ {
+			if array[min] > array[j] {
+				min = j
+			}
+		}
+		if min != i {
+			swap(array, min, i)
+		}
+	}
+}
+
 func main() {
 	array := []int{21, 341, 2, 23, 11, 11, 1, 3345}
-	bubble_sort(array, len(array))
+	selection_sort(array, len(array))
 	fmt.Println(array)
 }
