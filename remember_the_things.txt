@@ -1,0 +1,15 @@
+// during working with number of floating point or numbers
+
+
+1. showing fraction digit
+suppose int i = 10;
+now i have to show it as 10.000000 or setting limited fraction digit will be like 
+double d = static_cast<double>(d); // static_cast is safe casting method to use changing type of related type such as int to float to double to long long..to ensure no data is lossed from main data
+cout << fixed << setprecision(7) << d << endl;
+// ouput == 10.0000000
+
+
+2. filling zero before number
+int answer = 100;
+ cout << setfill('0') << setw(5) << answer << endl;
+ // ouput = 00100

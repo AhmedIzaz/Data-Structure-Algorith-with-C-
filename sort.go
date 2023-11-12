@@ -46,6 +46,25 @@ func insertion_sort(array []int, length int) {
 	}
 }
 
+// 0 0 1
+func merge(array []int, left int, mid int, right int) {
+	array1 := []int{}
+	array2 := []int{}
+	length1 := (mid - left) + 1
+	// length2 :=
+	// for i:=0; i
+}
+
+func merge_sort(array []int, left int, right int) {
+	if left >= right {
+		return
+	}
+	mid := left + ((right - left) / 2)
+	merge_sort(array, left, mid)
+	merge_sort(array, mid+1, right)
+	merge(array, left, mid, right)
+}
+
 func main() {
 	array := []int{21, 341, 2, 23, 11, 11, 1, 3345}
 	insertion_sort(array, len(array))
