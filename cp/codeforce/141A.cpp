@@ -1,42 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-int getStringValue(string str);
-
+string sliceTheString(string inputStr, int separator);
 int main(){
-    vector<string> inputStrings;
-    int length = 0;
-    int userStrValue = 0;
+    string totalStr = "";
     for(int i = 0; i < 2; i++){
         string str;
         getline(cin, str);
-        inputStrings.push_back(str);
-        length += str.length();
-        int strValue = getStringValue(str);
-        userStrValue+=strValue;
+        totalStr += str;
     };
 
     string fuzzleStrl;
     getline(cin, fuzzleStrl);
-    int puzzleStrValue = getStringValue(fuzzleStrl);
-
-    if((length != fuzzleStrl.size()) || (puzzleStrValue != userStrValue)) {
-        cout << "NO";
-    }else{
-        cout << "YES";
+    int i;
+    for(i = 0; (i < totalStr.size()) && (fuzzleStrl.size() > 0); i++){
+        int index = fuzzleStrl.find(totalStr[i]);
+        if( index < fuzzleStrl.size() && index >= 0){
+                fuzzleStrl = sliceTheString(fuzzleStrl, index);
+        }else{
+            break;
+        };
     };
 
-
+    if(i!=totalStr.size() || fuzzleStrl.size() != 0){
+            cout << "NO" <<endl;
+    }else{
+            cout << "YES" << endl;
+    };
     return 0;
 }
 
-
-int getStringValue(string str){
-        int value = 0;
-        for (int i = 0; i < str.size(); i++){
-            char ch = (int)str[i];
-            value+=ch;
-        };
-
-        return value;
-}
+string sliceTheString(string inputStr, int separator){
+    string firstPart = inputStr.substr(0, separator);
+    string secondPart = inputStr.substr(separator+1);
+    return firstPart+secondPart;
+};
