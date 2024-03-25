@@ -13,38 +13,53 @@ int main()
     return 0;
 }
 
-void mergeNumbers(vector<int>&numbers, int left, int mid, int right){
-    vector<int> n1, n2;
-    int n1Length = mid-left+1, n2Length = right - mid;
+void mergeArr(vector<int>& numbers, int left, int mid, int right){
+    vector<int> ar1, ar2;
+    int l1=mid-left+1, l2=right-mid;
 
-    for(int i = left; i <= mid; i++){
-        n1.push_back(numbers[i]);
+    for(int i=left; i <= mid; i++){
+        ar1.push_back(numbers[i]);
     };
-    for(int i = mid+1; i <= right; i++){
-        n2.push_back(numbers[i]);
+    for(int i=mid+1; i <= right; i++){
+        ar2.push_back(numbers[i]);
     };
-    int n1Remainer = 0, n2Remainer = 0, starter = left;
-    while(n1Remainer < n1Length && n2Remainer < n2Length){
-        if(n1[n1Remainer] < n2[n2Remainer]){
-            numbers[starter] = n1[n1Remainer++];
+    int i = 0, j = 0, k = left;
+    while(i < l1 && j < l2){
+        if(ar1[i] < ar2[j]){
+            numbers[k++] = ar1[i++];
         }else{
-            numbers[starter] = n2[n2Remainer++];
+            numbers[k++] = ar2[j++];
         }
-        starter++;
     };
-    while(n1Remainer < n1Length){
-        numbers[starter++] = n1[n1Remainer++];
+     while(i < l1){
+            numbers[k++] = ar1[i++];
     };
-     while(n2Remainer < n2Length){
-        numbers[starter++] = n2[n2Remainer++];
+     while(j < l2){
+            numbers[k++] = ar2[j++];
     };
-
 };
 
-void mergeSort(vector<int> &numbers, int left, int right){
-    if(left >= right) return;
-    int mid = left+((right - left)/2);
+void mergeSort(vector<int>& numbers, int left, int right){
+    if(left>=right) return;
+    int mid = left+(right-left)/2;
     mergeSort(numbers, left, mid);
     mergeSort(numbers, mid+1, right);
-    mergeNumbers(numbers, left, mid, right);
+    mergeArr(numbers, left, mid, right);
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
