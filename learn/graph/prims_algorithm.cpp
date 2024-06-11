@@ -71,15 +71,15 @@ void primsAlgorithm(vector<vector<Edge>> &graphList, vector<bool> &visited, int 
     pq.push({src, 0});
 
     while(!pq.empty()){
-        pair<int, int> source = pq.top();
+        auto [s, w] = pq.top();
         pq.pop();
 
-        if(!visited[source.first]){
-            visited[source.first] = true;
-            minimum_cost += source.second;
+        if(!visited[s]){
+            visited[s] = true;
+            minimum_cost += w;
 
-            for(int i = 0; i < graphList[source.first].size(); i++){
-                Edge e = graphList[source.first][i];
+            for(int i = 0; i < graphList[s].size(); i++){
+                Edge e = graphList[s][i];
 
                 if(!visited[e.dst]){
                     pq.push({e.dst, e.weight});
