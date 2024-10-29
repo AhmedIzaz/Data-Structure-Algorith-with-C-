@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// all path from a node to a target node
 class Edge {
 public:
     int src, dst;
