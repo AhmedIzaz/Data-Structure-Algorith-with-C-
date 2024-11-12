@@ -25,6 +25,7 @@ class LinkedList {
                 cout << temp->data << " -> ";
                 temp = temp->nextNode;
             };
+            cout << '\n';
         };
         // add new node
         void insertNode (int data){
@@ -50,6 +51,21 @@ class LinkedList {
 
             };
         };
+        // reverse the list
+        void makeReverse(){
+            Node *prevPoint = nullptr;
+            Node *currPoint = this->head;
+            Node *nextPoint;
+
+            while(currPoint != nullptr){
+                nextPoint = currPoint->nextNode;
+                currPoint->nextNode = prevPoint;
+
+                prevPoint = currPoint;
+                currPoint = nextPoint;
+            };
+            this->head = prevPoint;
+        };
 };
 
 int main(){
@@ -64,11 +80,11 @@ int main(){
     my_list->insertNode(50);
     my_list->insertNode(60);
 
-    my_list->deleteNode(40);
-
-
     my_list->displayList();
 
+    my_list->makeReverse();
+
+    my_list->displayList();
 
     return 0;
 };
